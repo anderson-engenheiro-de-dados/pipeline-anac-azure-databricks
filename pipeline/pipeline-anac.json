@@ -1,0 +1,55 @@
+{
+	"name": "pipeline-anac",
+	"properties": {
+		"activities": [
+			{
+				"name": "anac trusted",
+				"type": "DatabricksNotebook",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"notebookPath": "/Repos/anderson.pett@outlook.com/pipeline-anac-azure-databricks/Notebooks - Produção/4.  Anac - Camada Trusted (Refaturado)"
+				},
+				"linkedServiceName": {
+					"referenceName": "AzureDatabricks conexao",
+					"type": "LinkedServiceReference"
+				}
+			},
+			{
+				"name": "Refined",
+				"type": "DatabricksNotebook",
+				"dependsOn": [
+					{
+						"activity": "anac trusted",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"notebookPath": "/Repos/anderson.pett@outlook.com/pipeline-anac-azure-databricks/Notebooks - Produção/6. Anac - Camada Refined (Refaturado)"
+				},
+				"linkedServiceName": {
+					"referenceName": "AzureDatabricks conexao",
+					"type": "LinkedServiceReference"
+				}
+			}
+		],
+		"annotations": []
+	}
+}
