@@ -1,0 +1,15 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"value": "Factory-databricks-engineer"
+		},
+		"AzureDatabricks conexao_accessToken": {
+			"value": ""
+		},
+		"AzureDatabricks conexao_properties_typeProperties_existingClusterId": {
+			"value": "0813-081545-5lu5on9c"
+		}
+	}
+}
